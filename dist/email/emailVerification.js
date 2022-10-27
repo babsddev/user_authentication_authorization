@@ -6,7 +6,7 @@ function emailVerificationView(token) {
     let temp = `
      <div style="max-width: 700px;
      margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-     <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to Airtime to Cash POD G.</h2>
+     <h2 style="text-align: center; text-transform: uppercase;color: teal;">Verify Email</h2>
       <p>Hi there, Follow the link by clicking on the button to verify your email
       </p>
        <a href=${link}
