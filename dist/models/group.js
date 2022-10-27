@@ -7,7 +7,7 @@ exports.GroupInstance = void 0;
 const sequelize_1 = require("sequelize");
 const database_1 = __importDefault(require("../dataBase/database"));
 // export class GroupInstance extends Model<DroupAttributes> {}
-exports.GroupInstance = database_1.default.define('User', {
+exports.GroupInstance = database_1.default.define("UserGroup", {
     id: {
         type: sequelize_1.DataTypes.UUIDV4,
         primaryKey: true,
@@ -15,12 +15,15 @@ exports.GroupInstance = database_1.default.define('User', {
     },
     account: {
         type: sequelize_1.DataTypes.STRING,
+        defaultValue: "none",
     },
     engineering: {
         type: sequelize_1.DataTypes.STRING,
+        defaultValue: "none",
     },
     humanResource: {
         type: sequelize_1.DataTypes.STRING,
+        defaultValue: "none",
     },
     userID: {
         type: sequelize_1.DataTypes.STRING,

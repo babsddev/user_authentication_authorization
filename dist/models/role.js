@@ -7,7 +7,7 @@ exports.RoleInstance = void 0;
 const sequelize_1 = require("sequelize");
 const database_1 = __importDefault(require("../dataBase/database"));
 // export class RoleInstance extends Model<RoleAttributes> {}
-exports.RoleInstance = database_1.default.define('User', {
+exports.RoleInstance = database_1.default.define("UserRole", {
     id: {
         type: sequelize_1.DataTypes.UUIDV4,
         primaryKey: true,

@@ -29,3 +29,27 @@
   isVerified varchar(255),
   primary key (id)
   );
+
+  create table usergroups (
+  id varchar(50),
+    account varchar(100),
+  engineering varchar(100),
+  humanResource varchar(100),
+  userID varchar(50),
+  createdAt varchar (20),
+  updatedAt varchar (20),
+  primary key (id),
+   foreign key (userID) references users(id)
+  );
+
+   create table userroles (
+  id varchar(50),
+    junior varchar(100),
+  midLevel varchar(100),
+  senior varchar(100),
+  userID varchar(50),
+  createdAt varchar (20),
+  updatedAt varchar (20),
+  primary key (id),
+   foreign key (userID) references users(id)
+  );

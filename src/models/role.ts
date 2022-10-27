@@ -1,17 +1,17 @@
-import { DataTypes, Model } from 'sequelize'
-import myDatabase from '../dataBase/database'
+import { DataTypes, Model } from "sequelize";
+import myDatabase from "../dataBase/database";
 
 interface RoleAttributes {
-  id: string
-  junior?: string
-  midLevel?: string
-  senior?: string
-  userID: string
+  id: string;
+  junior?: string;
+  midLevel?: string;
+  senior?: string;
+  userID: string;
 }
 
 // export class RoleInstance extends Model<RoleAttributes> {}
 
-export const RoleInstance = myDatabase.define('User', {
+export const RoleInstance = myDatabase.define("UserRole", {
   id: {
     type: DataTypes.UUIDV4,
     primaryKey: true,
@@ -30,4 +30,4 @@ export const RoleInstance = myDatabase.define('User', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-})
+});

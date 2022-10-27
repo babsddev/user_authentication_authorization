@@ -7,6 +7,8 @@ import myDatabase from "./dataBase/database";
 
 import indexRouter from "./routes/index";
 import usersRouter from "./routes/users";
+import usersGroup from "./routes/group";
+import usersRole from "./routes/role";
 myDatabase
   .authenticate()
   .then(() => {
@@ -47,6 +49,8 @@ app.post("/create", (req: Request, res: Response, next: NextFunction) => {
 });
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/group", usersGroup);
+app.use("/role", usersRole);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
