@@ -1,0 +1,13 @@
+ "firstName": "string",
+
+  "lastName": "string",
+
+  "username": "string",
+
+  "email": "string@lop.mko",
+
+  "password": "string",
+
+  "confirmPassword": "string",
+
+  "phoneNumber": "string",
