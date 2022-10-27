@@ -9,7 +9,7 @@ const database_1 = __importDefault(require("../dataBase/database"));
 const group_1 = require("./group");
 const role_1 = require("./role");
 // export class UserInstance extends Model<UserAttributes> {}
-exports.UserInstance = database_1.default.define('User', {
+exports.UserInstance = database_1.default.define("User", {
     id: {
         type: sequelize_1.DataTypes.UUIDV4,
         primaryKey: true,
@@ -20,10 +20,10 @@ exports.UserInstance = database_1.default.define('User', {
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'First name is required',
+                msg: "First name is required",
             },
             notEmpty: {
-                msg: 'First name cannot be empty',
+                msg: "First name cannot be empty",
             },
         },
     },
@@ -32,10 +32,10 @@ exports.UserInstance = database_1.default.define('User', {
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'Last name is required',
+                msg: "Last name is required",
             },
             notEmpty: {
-                msg: 'Last name cannot be empty',
+                msg: "Last name cannot be empty",
             },
         },
     },
@@ -44,10 +44,10 @@ exports.UserInstance = database_1.default.define('User', {
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'Username is required',
+                msg: "Username is required",
             },
             notEmpty: {
-                msg: 'Username cannot be empty',
+                msg: "Username cannot be empty",
             },
         },
     },
@@ -56,10 +56,10 @@ exports.UserInstance = database_1.default.define('User', {
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'Email is required',
+                msg: "Email is required",
             },
             notEmpty: {
-                msg: 'Email cannot be empty',
+                msg: "Email cannot be empty",
             },
         },
     },
@@ -68,10 +68,10 @@ exports.UserInstance = database_1.default.define('User', {
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'Password is required',
+                msg: "Password is required",
             },
             notEmpty: {
-                msg: 'Password cannot be empty',
+                msg: "Password cannot be empty",
             },
         },
     },
@@ -80,30 +80,33 @@ exports.UserInstance = database_1.default.define('User', {
         allowNull: false,
         validate: {
             notNull: {
-                msg: 'Phone number is required',
+                msg: "Phone number is required",
             },
             notEmpty: {
-                msg: 'Phone number cannot be empty',
+                msg: "Phone number cannot be empty",
             },
         },
     },
     avatar: {
         type: sequelize_1.DataTypes.STRING,
-        defaultValue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7nG8OgXmMOXXiwbNOc-PPXUcilcIhCkS9BQ&usqp=CAU',
+        defaultValue: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7nG8OgXmMOXXiwbNOc-PPXUcilcIhCkS9BQ&usqp=CAU",
     },
     isVerified: {
         type: sequelize_1.DataTypes.STRING,
         defaultValue: false,
     },
+    token: {
+        type: sequelize_1.DataTypes.STRING,
+    },
 });
-exports.UserInstance.hasMany(role_1.RoleInstance, { foreignKey: 'userID', as: 'Role' });
+exports.UserInstance.hasMany(role_1.RoleInstance, { foreignKey: "userID", as: "Role" });
 exports.UserInstance.hasMany(group_1.GroupInstance, {
-    foreignKey: 'userID',
-    as: 'Group',
+    foreignKey: "userID",
+    as: "Group",
 });
-role_1.RoleInstance.belongsTo(exports.UserInstance, { foreignKey: 'userID', as: 'User' });
+role_1.RoleInstance.belongsTo(exports.UserInstance, { foreignKey: "userID", as: "User" });
 group_1.GroupInstance.belongsTo(exports.UserInstance, {
-    foreignKey: 'userID',
-    as: 'User',
+    foreignKey: "userID",
+    as: "User",
 });
 //# sourceMappingURL=users.js.map

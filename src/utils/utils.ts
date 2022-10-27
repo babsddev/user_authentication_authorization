@@ -1,5 +1,5 @@
-import Joi from 'joi'
-import jwt from 'jsonwebtoken'
+import Joi from "joi";
+import jwt from "jsonwebtoken";
 
 export const createUserSchema = Joi.object()
   .keys({
@@ -17,49 +17,49 @@ export const createUserSchema = Joi.object()
       .pattern(/^[0-9]+$/)
       .required(),
     confirmPassword: Joi.any()
-      .equal(Joi.ref('password'))
+      .equal(Joi.ref("password"))
 
       .required()
 
-      .label('Confirm password')
+      .label("Confirm password")
 
-      .messages({ 'any.only': '{{#label}} does not match' }),
+      .messages({ "any.only": "{{#label}} does not match" }),
   })
-  .with('password', 'confirmPassword')
+  .with("password", "confirmPassword");
 
 export const loginUserSchema = Joi.object().keys({
   email: Joi.string().trim().lowercase(),
   username: Joi.string().trim().lowercase(),
   password: Joi.string().required(),
-})
+});
 
 export const changePasswordSchema = Joi.object()
   .keys({
     password: Joi.string().required(),
     confirmPassword: Joi.any()
-      .equal(Joi.ref('password'))
+      .equal(Joi.ref("password"))
 
       .required()
 
-      .label('Confirm password')
+      .label("Confirm password")
 
-      .messages({ 'any.only': '{{#label}} does not match' }),
+      .messages({ "any.only": "{{#label}} does not match" }),
   })
-  .with('password', 'confirmPassword')
+  .with("password", "confirmPassword");
 
 export const generateToken = (user: Record<string, unknown>): unknown => {
-  const passPhrase = 'process.env.JWT_SECRETE as string'
-  return jwt.sign(user, passPhrase, { expiresIn: '7d' })
-}
+  const passPhrase = process.env.JWT_SECRETE as string;
+  return jwt.sign(user, passPhrase, { expiresIn: "7d" });
+};
 
 export const options = {
   abortEarly: false,
   errors: {
     wrap: {
-      label: '',
+      label: "",
     },
   },
-}
+};
 
 export const userUpdateSchema = Joi.object().keys({
   firstName: Joi.string(),
@@ -67,4 +67,12 @@ export const userUpdateSchema = Joi.object().keys({
   email: Joi.string().trim().lowercase(),
   phoneNumber: Joi.string(),
   avatar: Joi.string(),
-})
+});
+
+export const sendEmail = Joi.object().keys({
+  from: Joi.string(),
+  to: Joi.string().required(),
+  subject: Joi.string().required(),
+  text: Joi.string(),
+  html: Joi.string().required(),
+});

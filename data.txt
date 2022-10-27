@@ -11,3 +11,21 @@
   "confirmPassword": "string",
 
   "phoneNumber": "string",
+
+
+  create table users (
+  id varchar(50),
+  firstName varchar(100),
+  lastName varchar(100),
+  username varchar(100),
+  email varchar(50),
+  password varchar(255),
+  confirmPassword varchar(255),
+  phoneNumber varchar(20),
+  createdAt varchar (20),
+  updatedAt varchar (20),
+  token varchar(255),
+  avatar varchar (255),
+  isVerified varchar(255),
+  primary key (id)
+  );

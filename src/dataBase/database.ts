@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize'
 
-const myDatabase = new Sequelize('ideaLabDatabase', 'root', '12345678', {
+const myDatabase = new Sequelize('ideaLabDatabase', 'root', '0987654321', {
   host: 'localhost',
   dialect: 'mysql',
   logging: false,

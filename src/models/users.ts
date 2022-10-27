@@ -1,23 +1,23 @@
-import { DataTypes, Model } from 'sequelize'
-import myDatabase from '../dataBase/database'
-import { GroupInstance } from './group'
-import { RoleInstance } from './role'
+import { DataTypes, Model } from "sequelize";
+import myDatabase from "../dataBase/database";
+import { GroupInstance } from "./group";
+import { RoleInstance } from "./role";
 
 interface UserAttributes {
-  id: string
-  firstName: string
-  lastName: string
-  username: string
-  email: string
-  password: string
-  phoneNumber: string
-  avatar: string
-  isVerified?: boolean
+  id: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  avatar: string;
+  isVerified?: boolean;
 }
 
 // export class UserInstance extends Model<UserAttributes> {}
 
-export const UserInstance = myDatabase.define('User', {
+export const UserInstance = myDatabase.define("User", {
   id: {
     type: DataTypes.UUIDV4,
     primaryKey: true,
@@ -28,10 +28,10 @@ export const UserInstance = myDatabase.define('User', {
     allowNull: false,
     validate: {
       notNull: {
-        msg: 'First name is required',
+        msg: "First name is required",
       },
       notEmpty: {
-        msg: 'First name cannot be empty',
+        msg: "First name cannot be empty",
       },
     },
   },
@@ -40,10 +40,10 @@ export const UserInstance = myDatabase.define('User', {
     allowNull: false,
     validate: {
       notNull: {
-        msg: 'Last name is required',
+        msg: "Last name is required",
       },
       notEmpty: {
-        msg: 'Last name cannot be empty',
+        msg: "Last name cannot be empty",
       },
     },
   },
@@ -52,10 +52,10 @@ export const UserInstance = myDatabase.define('User', {
     allowNull: false,
     validate: {
       notNull: {
-        msg: 'Username is required',
+        msg: "Username is required",
       },
       notEmpty: {
-        msg: 'Username cannot be empty',
+        msg: "Username cannot be empty",
       },
     },
   },
@@ -64,10 +64,10 @@ export const UserInstance = myDatabase.define('User', {
     allowNull: false,
     validate: {
       notNull: {
-        msg: 'Email is required',
+        msg: "Email is required",
       },
       notEmpty: {
-        msg: 'Email cannot be empty',
+        msg: "Email cannot be empty",
       },
     },
   },
@@ -76,10 +76,10 @@ export const UserInstance = myDatabase.define('User', {
     allowNull: false,
     validate: {
       notNull: {
-        msg: 'Password is required',
+        msg: "Password is required",
       },
       notEmpty: {
-        msg: 'Password cannot be empty',
+        msg: "Password cannot be empty",
       },
     },
   },
@@ -88,31 +88,38 @@ export const UserInstance = myDatabase.define('User', {
     allowNull: false,
     validate: {
       notNull: {
-        msg: 'Phone number is required',
+        msg: "Phone number is required",
       },
       notEmpty: {
-        msg: 'Phone number cannot be empty',
+        msg: "Phone number cannot be empty",
       },
     },
   },
   avatar: {
     type: DataTypes.STRING,
     defaultValue:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7nG8OgXmMOXXiwbNOc-PPXUcilcIhCkS9BQ&usqp=CAU',
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7nG8OgXmMOXXiwbNOc-PPXUcilcIhCkS9BQ&usqp=CAU",
   },
   isVerified: {
     type: DataTypes.STRING,
     defaultValue: false,
   },
-})
 
-UserInstance.hasMany(RoleInstance, { foreignKey: 'userID', as: 'Role' })
+  token: {
+    type: DataTypes.STRING,
+  },
+});
 
-UserInstance.hasMany(GroupInstance, { foreignKey: 'userID', as: 'Group' })
+UserInstance.hasMany(RoleInstance, { foreignKey: "userID", as: "Role" });
 
-RoleInstance.belongsTo(UserInstance, { foreignKey: 'userID', as: 'User' })
+UserInstance.hasMany(GroupInstance, {
+  foreignKey: "userID",
+  as: "Group",
+});
+
+RoleInstance.belongsTo(UserInstance, { foreignKey: "userID", as: "User" });
 
 GroupInstance.belongsTo(UserInstance, {
-  foreignKey: 'userID',
-  as: 'User',
-})
+  foreignKey: "userID",
+  as: "User",
+});
