@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
-const myDatabase = new sequelize_1.Sequelize('ideaLabDatabase', 'root', '0987654321', {
+const myDatabase = new sequelize_1.Sequelize(`${process.env.DATABASE}`, `${process.env.DATABASE_USER}`, `${process.env.DATABASE_PASSWORD}`, {
     host: 'localhost',
     dialect: 'mysql',
     logging: false,
